@@ -1,8 +1,27 @@
-# React + Vite
+![](./public/github_img.png)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# QrCode Reader with React
 
-Currently, two official plugins are available:
+A QrCode reader made with the html5-qrcode library with mobile responsiveness using tailwindcss
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
+
+- vite
+- html5-qrcode 
+- tailwindcss
+
+## Getting Started
+
+1. Clone the repository: `git clone https://github.com/Hora-de-Codar/react-QrCode.git`
+2. Navigate to the project directory: `cd react-QrCode`
+3. Install dependencies: `yarn install` or `npm install`
+4. Run the development server: `yarn dev` or `npm run dev`
+5. Open [http://localhost:5173](http://localhost:5173) in your browser
+
+## Tests
+
+no test implementation like Cypress and Jest
+
+## Priorities
+
+This project was developed with a focus on creating a qrcode reader for any types of qrcodes, their purpose and deciphering the codes contained in them.
