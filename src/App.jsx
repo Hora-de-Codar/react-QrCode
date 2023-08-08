@@ -5,6 +5,7 @@ import "./App.css";
 function App() {
   const [isEnabled, setEnabled] = useState(false);
   const [qrMessage, setQrMessage] = useState("");
+  const [isQrCodeVisible, setQrCodeVisible] = useState(false);
 
   useEffect(() => {
     const config = { fps: 10, qrbox: { width: 200, height: 200 } };
@@ -14,8 +15,8 @@ function App() {
       if (html5QrCode && html5QrCode.isScanning) {
         html5QrCode
           .stop()
-          .then(() => console.log("Scaner stoped"))
-          .catch(() => console.log("Scaner stoped with error"));
+          .then(() => console.log("Leitor parado"))
+          .catch(() => console.log("O leitor parou com erro"));
       }
     };
 
@@ -34,10 +35,17 @@ function App() {
       qrScanerStop();
     };
   }, [isEnabled]);
+
+  const toggleQrCodeVisibility = () => {
+    setQrCodeVisible(!isQrCodeVisible);
+  };
+
   return (
     <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-gradient-to-r from-sky-500 to-indigo-500">
       <div
-        className="relative w-72 h-72 rounded-md overflow-hidden"
+        className={`relative w-72 h-72 rounded-md overflow-hidden ${
+          isQrCodeVisible ? "block" : "hidden"
+        }`}
         id="qrCodeContainer"
       ></div>
       {qrMessage && (
@@ -47,7 +55,10 @@ function App() {
       )}
       <button
         className="absolute top-10 right-10 p-3 flex rounded-md bg-blue-200 hover:bg-blue-100 transition-all"
-        onClick={() => setEnabled(!isEnabled ? "On" : "Off")}
+        onClick={() => {
+          setEnabled(!isEnabled);
+          toggleQrCodeVisibility();
+        }}
       >
         <span className="material-symbols-outlined">qr_code</span>
       </button>
@@ -57,9 +68,8 @@ function App() {
           alt="Hora de codar"
           className="w-12 mx-2"
         />
-        <p className="font-bold text-white">Hoda de codar</p>
+        <p className="font-bold text-white">Hora de codar</p>
       </div>
-
     </div>
   );
 }
